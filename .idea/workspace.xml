@@ -4,36 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e03157e-ce61-4cd2-8521-e418111431e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Individual_Project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/01d@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/01n@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/02d@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/02n@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/03d@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/03n@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/04d@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/04n@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/09d@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/09n@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/10d@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/10n@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/11d@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/11n@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/13d@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/13n@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/50d@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/50n@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/icons_description.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/owm_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pil_img.py" afterDir="false" />
+    <list default="true" id="1e03157e-ce61-4cd2-8521-e418111431e0" name="Changes" comment="Code uploaded to Git">
+      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/handlers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/pil_img.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/keyboards/main_kb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/owm_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/owm_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pil_img.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +29,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "mozerines"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/mozerines/Weather_Widget_Bot.git",
+    "accountId": "ce466665-4e22-4c9d-aed0-057084cf2373"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -58,22 +49,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.owm_api.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pil_img.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Run",
+    "Python.main_kb.executor": "Run",
+    "Python.owm_api.executor": "Run",
+    "Python.pil_img.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\murug\PycharmProjects\Individual_Project\icons" />
+      <recent name="C:\Users\murug\PycharmProjects\Individual_Project\handlers" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.owm_api">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Individual_Project" />
       <option name="ENV_FILES" value="" />
@@ -88,6 +81,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main_kb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Individual_Project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/keyboards" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/keyboards/main_kb.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -131,7 +146,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pil_img.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\murug\PycharmProjects\Individual_Project\icons\pil_img.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -142,9 +157,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.main_kb" />
         <item itemvalue="Python.owm_api" />
         <item itemvalue="Python.pil_img" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -164,6 +180,30 @@
       <option name="presentableId" value="Default" />
       <updated>1747028171543</updated>
     </task>
+    <task id="LOCAL-00001" summary="Code uploaded to Git">
+      <option name="closed" value="true" />
+      <created>1747790997823</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1747790997823</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Code uploaded to Git" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code uploaded to Git" />
   </component>
 </project>
