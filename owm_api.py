@@ -1,3 +1,5 @@
+import datetime
+
 import requests, time
 from PIL import Image
 
@@ -38,6 +40,10 @@ def get_direction(degrees: float) -> str | None:
         return 'СЗ'
     else:
         return None
+
+def get_time(timestamp: int):
+    unix_time = datetime.datetime.fromtimestamp(timestamp)
+    return unix_time.strftime("%Y-%m-%d %H:%M:%S UTC")
 
 
 

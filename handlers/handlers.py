@@ -1,17 +1,18 @@
 from aiogram.types import CallbackQuery, Message
 
-from keyboards.city_kb import city_kb
-# from owm_api import get_weather
+from keyboards.developer_kb import developer_kb
+from keyboards.main_kb import main_kb
+from keyboards.city_kb import city_kb, full_city_kb
 from keyboards.lang_kb import lang_kb, lang_callbacks
+from keyboards.weather_kb import weather_kb
+
 from aiogram.filters import Command
 from config import *
-from keyboards.main_kb import main_kb
 
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-from keyboards.weather_kb import weather_kb
-from owm_api import get_city, get_direction
+from owm_api import get_city, get_direction, get_time
 
 
 class WeatherStates(StatesGroup):
@@ -93,11 +94,11 @@ async def lang_state(callback: CallbackQuery, state: FSMContext):
                                              reply_markup=weather_kb)
         elif weather_data['cod'] == 404:
             await callback.answer(text=f'Извините, населённый пункт не существует или введён неправильно, '
-                                 f'проверьте правильность введённых данных.',
+                                       f'проверьте правильность введённых данных.',
                                   show_alert=True)
             await callback.message.edit_text(text='Главное меню:\n'
-                                                        f'Язык: {data.get('lang')}\n'
-                                                        f'Город: {data.get('city')}',
+                                                  f'Язык: {data.get('lang')}\n'
+                                                  f'Город: {data.get('city')}',
                                              reply_markup=main_kb)
         elif weather_data['cod'] == 429:
             await callback.message.edit_text(
@@ -108,8 +109,8 @@ async def lang_state(callback: CallbackQuery, state: FSMContext):
             await callback.answer(text=f'Возникла ошибка, пожалуйста, сообщите об этом разработчику,'
                                        f' указав код ошибки: {weather_data['cod']}')
             await callback.message.edit_text(text='Главное меню:\n'
-                                                        f'Язык: {data.get('lang')}\n'
-                                                        f'Город: {data.get('city')}',
+                                                  f'Язык: {data.get('lang')}\n'
+                                                  f'Город: {data.get('city')}',
                                              reply_markup=main_kb)
 
     if callback.data == 'full_weather':
@@ -117,10 +118,40 @@ async def lang_state(callback: CallbackQuery, state: FSMContext):
         city = data.get('city')
         lang = data.get('lang', 'Ru')
         weather_data = get_city(city=city, lang=lang)
-        await callback.message.edit_text(text=f'Координаты: {weather_data['coord']['lon']}, {weather_data['coord']['lat']}\n'
-                                              f'**Погода**: '
-                                              f'{weather_data['weather'][0]['description']}')
-
+        await callback.message.edit_text(
+            text=f'Координаты: {weather_data['coord']['lon']}, {weather_data['coord']['lat']}\n\n'
+                 f'<b>Погода</b>:\n'
+                 f'{weather_data['weather'][0]['description']}\n\n'
+                 f'Температура: {weather_data['main']['temp']}°C\n'
+                 f'Ощущается как: {weather_data['main']['feels_like']} °C\n'
+                 f'Минимальная температура: {weather_data['main']['temp_min']} °C\n'
+                 f'Максимальная температура: {weather_data['main']['temp_max']} °C\n'
+                 f'Давление: {weather_data['main']['pressure']} hPa\n'
+                 f'Влажность: {weather_data['main']['humidity']}%\n'
+                 f'Давление на уровне моря: {weather_data['main']['sea_level']} hPa\n'
+                 f'Давление на уровне земли: {weather_data['main']['grnd_level']} hPa\n'
+                 f'Видимость: {weather_data['visibility']} м\n\n'
+                 f'<b>Ветер</b>:\n'
+                 f'Скорость ветра: {weather_data['wind']['speed']} м/с\n'
+                 f'Направление ветра: {get_direction(weather_data['wind']['deg'])}\n'
+                 f'Облачность: {weather_data['clouds']['all']}%\n'
+                 f'Время расчёта погоды: {get_time(weather_data['dt'])}\n'
+                 f'Код страны: {weather_data['sys']['country']}\n'
+                 f'Рассвет: {get_time(weather_data['sys']['sunrise'])}\n'
+                 f'Закат: {get_time(weather_data['sys']['sunset'])}\n'
+                 f'Временная зона: {weather_data['timezone']}\n'
+                 f'ID города: {weather_data['id']}\n'
+                 f'Название города: {weather_data['name']}',
+            reply_markup=full_city_kb,
+            parse_mode='HTML')
+    if callback.data == 'developer':
+        await callback.message.edit_text(text=f'Разработчик данного бота: Mozerines (Владислав Муругов)\n'
+                                              f'Используемый сервис: Open Weather Map\n\n'
+                                              f'<b>Социальные сети разработчика</b>:\n'
+                                              f'Telegram: @Mozerines\n'
+                                              f'ВКонтакте: <a href="https://vk.com/mozerines">Владислав Муругов</a>',
+                                         parse_mode='HTML',
+                                         reply_markup=developer_kb)
 
 
 @dp.message()
