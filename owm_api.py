@@ -4,7 +4,7 @@ from PIL import Image
 from keys import API_KEY
 
 
-def get_city(city: str, lang: str = 'Ru', units: str = 'Metric', key: str = API_KEY,) -> dict:
+def get_city(city: str, lang: str = 'Ru', units: str = 'Metric', key: str = API_KEY, ) -> dict:
     """
     :param city: City
     :param lang: Language
@@ -19,29 +19,27 @@ def get_city(city: str, lang: str = 'Ru', units: str = 'Metric', key: str = API_
     return weather_data
 
 
-# def get_weather():
-#     data = get_city(API_KEY)
-#     print(type(data['cod']))
-#     if data['cod'] == 200:
-#         print(data)
-#
-#     elif data['cod'] == '404':
-#         print('Город указан неправильно или не существует, проверьте правильность введённых данных.')
-#         get_weather()
-#
-#     elif data['cod'] == '429':
-#         print('К сожалению, лимит запросов в минуту или месяц был исчерпан, попробуйте повторить запрос через минуту,'
-#               'если ошибка повторится, значит бот недоступен до момента пополнения числа запросов.')
-#         get_weather()
-#     else:
-#         print(f'Код ошибки: {data['cod']}\n'
-#               f'Сообщите об этом разработчику @Mozerines')
-#         get_weather()
-#
-#     return data
+def get_direction(degrees: float) -> str | None:
+    if 0 >= degrees <= 22.5 or 337.5 >= degrees <= 360:
+        return 'С'
+    elif 22.5 > degrees < 67.5:
+        return 'СВ'
+    elif 67.5 >= degrees <= 112.5:
+        return 'В'
+    elif 112.5 > degrees < 167.5:
+        return 'ЮВ'
+    elif 167.5 >= degrees <= 202.5:
+        return 'Ю'
+    elif 202.5 > degrees < 247.5:
+        return 'ЮЗ'
+    elif 247.5 >= degrees <= 292.5:
+        return 'З'
+    elif 292.5 > degrees < 337.5:
+        return 'СЗ'
+    else:
+        return None
 
 
-# get_weather(get_city(API_KEY))
 
 # weather = str(data['weather'][0]['description']).capitalize()
 # icon_name: str = data['weather'][0]['icon']
