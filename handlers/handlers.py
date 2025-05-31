@@ -1,5 +1,7 @@
 from aiogram.types import CallbackQuery, Message
+from aiogram import F
 
+from handlers.widget import send_weather_widget
 from keyboards.developer_kb import developer_kb
 from keyboards.main_kb import main_kb
 from keyboards.city_kb import city_kb, full_city_kb
@@ -14,6 +16,8 @@ from aiogram.fsm.state import State, StatesGroup
 
 from owm_api import get_city, get_direction, get_time
 
+import asyncio
+
 
 class WeatherStates(StatesGroup):
     waiting_for_lang = State()
@@ -24,12 +28,20 @@ class WeatherStates(StatesGroup):
 async def cmd_start(message: Message, state: FSMContext):
     print('/start получен!')
     await state.set_state(WeatherStates.waiting_for_lang)
-    bot_message = await message.answer(text='Главное меню', reply_markup=main_kb)
+    data = await state.get_data()
+    if data.get('lang') is None:
+        await state.update_data(lang='Ru')
+        data = await state.get_data()
+    bot_message = await message.answer(text='Главное меню:\n'
+                                            f'Язык: {data.get('lang')}\n'
+                                            f'Город: {data.get('city')}',
+                                       reply_markup=main_kb)
     await state.update_data(bot_message=bot_message.message_id)
 
 
 @dp.callback_query(lambda callback: callback)
-async def lang_state(callback: CallbackQuery, state: FSMContext):
+async def callback_handlers(callback: CallbackQuery, state: FSMContext):
+    await state.update_data(bot_message=callback.message.message_id)
     if callback.data in lang_callbacks:
         await state.update_data(lang=callback.data)
         print(callback.data)
@@ -45,6 +57,9 @@ async def lang_state(callback: CallbackQuery, state: FSMContext):
 
     if callback.data == 'menu':
         data = await state.get_data()
+        if data.get('lang') is None:
+            await state.update_data(lang='Ru')
+            data = await state.get_data()
         await Weather_widget_bot.edit_message_text(text='Главное меню:\n'
                                                         f'Язык: {data.get('lang')}\n'
                                                         f'Город: {data.get('city')}',
@@ -153,6 +168,23 @@ async def lang_state(callback: CallbackQuery, state: FSMContext):
                                          parse_mode='HTML',
                                          reply_markup=developer_kb)
 
+    if callback.data == 'refresh_widget':
+        async def refresh_widget(callback: CallbackQuery, state: FSMContext):
+            """Обновление виджета"""
+            data = await state.get_data()
+            await send_weather_widget(callback.message.chat.id, data['city'], Weather_widget_bot)
+            await callback.answer("Виджет обновлен!")
+
+@dp.message(Command('widget'))
+async def start_widget(message: Message, state: FSMContext):
+    try:
+        # Можно запросить город через FSM
+        data = await state.get_data()  # Замените на реальный ввод
+        await send_weather_widget(message.chat.id, data.get('city'), Weather_widget_bot)
+    except Exception as e:
+        print(f"Ошибка в start_widget: {e}")
+        await message.answer("⚠️ Не удалось запустить виджет")
+
 
 @dp.message()
 async def city_state(message: Message, state: FSMContext):
@@ -170,13 +202,4 @@ async def city_state(message: Message, state: FSMContext):
                                         reply_markup=city_kb)
 
 
-@dp.callback_query(lambda callback: callback.data)
-async def city_weather(callback: CallbackQuery, state: FSMContext):
-    print(callback)
-    if callback.data == 'continue':
-        data = await state.get_data()
-        print(data)
-        city = data.get('city')
-        lang = data.get('lang')
-        print(city, lang)
-        print(get_city(city=city, lang=lang))
+

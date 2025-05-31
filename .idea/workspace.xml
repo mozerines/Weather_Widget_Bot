@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e03157e-ce61-4cd2-8521-e418111431e0" name="Changes" comment="- Refactored structure&#10;- Added keyboards and integrated in bot&#10;- Added handlers&#10;- API integrated with bot">
-      <change afterPath="$PROJECT_DIR$/icons/moon_maket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/rain_maket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/snow_maket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/sun_maket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/developer_kb.py" afterDir="false" />
+    <list default="true" id="1e03157e-ce61-4cd2-8521-e418111431e0" name="Changes" comment="- added keyboard and handler to get info about developer&#10;- added 4 model for generating image&#10;- added get_time function&#10;- added formating for messages (bold text and in-text link)&#10;&#10;Final bot version without images">
+      <change afterPath="$PROJECT_DIR$/handlers/storage_df.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/widget.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/keyboards/widget_kb.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/widget_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icons/moon_maket.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/icons/moon_maket.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icons/pil_img.py" beforeDir="false" afterPath="$PROJECT_DIR$/icons/pil_img.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icons/rain_maket.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/icons/rain_maket.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icons/snow_maket.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/icons/snow_maket.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icons/sun_maket.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/icons/sun_maket.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keyboards/city_kb.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/city_kb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/developer_kb.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/developer_kb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/weather_kb.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/weather_kb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/owm_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/owm_api.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,18 +36,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "mozerines"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;mozerines&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/mozerines/Weather_Widget_Bot.git",
-    "accountId": "ce466665-4e22-4c9d-aed0-057084cf2373"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/mozerines/Weather_Widget_Bot.git&quot;,
+    &quot;accountId&quot;: &quot;ce466665-4e22-4c9d-aed0-057084cf2373&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -50,17 +56,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.main.executor": "Run",
-    "Python.main_kb.executor": "Run",
-    "Python.owm_api.executor": "Run",
-    "Python.pil_img.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.img_loading.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main_kb.executor&quot;: &quot;Run&quot;,
+    &quot;Python.owm_api.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pil_img (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.pil_img.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\murug\PycharmProjects\Individual_Project\icons" />
@@ -68,6 +76,28 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="img_loading" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Individual_Project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/icons" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/icons/img_loading.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="lang_kb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Individual_Project" />
       <option name="ENV_FILES" value="" />
@@ -134,7 +164,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pil_img" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="pil_img (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Individual_Project" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,11 +173,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/icons" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\murug\PycharmProjects\Individual_Project\icons\pil_img.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/icons/pil_img.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -159,9 +189,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.pil_img (1)" />
+        <item itemvalue="Python.img_loading" />
         <item itemvalue="Python.lang_kb" />
         <item itemvalue="Python.owm_api" />
-        <item itemvalue="Python.pil_img" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +236,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748491870444</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- added keyboard and handler to get info about developer&#10;- added 4 model for generating image&#10;- added get_time function&#10;- added formating for messages (bold text and in-text link)&#10;&#10;Final bot version without images">
+      <option name="closed" value="true" />
+      <created>1748504508954</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748504508954</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -223,6 +262,7 @@
     <MESSAGE value="Code uploaded to Git" />
     <MESSAGE value="- Refactored structure&#10;- Added languages keyboard&#10;- Added handlers" />
     <MESSAGE value="- Refactored structure&#10;- Added keyboards and integrated in bot&#10;- Added handlers&#10;- API integrated with bot" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Refactored structure&#10;- Added keyboards and integrated in bot&#10;- Added handlers&#10;- API integrated with bot" />
+    <MESSAGE value="- added keyboard and handler to get info about developer&#10;- added 4 model for generating image&#10;- added get_time function&#10;- added formating for messages (bold text and in-text link)&#10;&#10;Final bot version without images" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added keyboard and handler to get info about developer&#10;- added 4 model for generating image&#10;- added get_time function&#10;- added formating for messages (bold text and in-text link)&#10;&#10;Final bot version without images" />
   </component>
 </project>
